@@ -1,15 +1,31 @@
 'use client'
 import { PRODUCT_CATEGORIES } from '@/config'
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import NavItem from './NavItem'
 import { useOnClickOutside } from '@/hooks/use-on-click-outside'
 
 const NavItems = () => {
+  //state for active nav item
   const [activeIndex, setActiveIndex] = useState<null | number>(null)
   const isAnyOpen = activeIndex !== null
 
-  const navRef = useRef<HTMLDivElement | null>(null)
+  //useeffect to close navbar on Escape key press
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setActiveIndex(null)
+      }
+    }
+    document.addEventListener('keydown', handler)
 
+    //CLEANUP
+    return () => {
+      document.removeEventListener('keydown', handler)
+    }
+  }, [])
+
+  //custom ref to close nav when clicking outside
+  const navRef = useRef<HTMLDivElement | null>(null)
   useOnClickOutside(navRef, () => setActiveIndex(null))
 
   return (
