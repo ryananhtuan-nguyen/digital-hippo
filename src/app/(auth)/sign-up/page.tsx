@@ -1,14 +1,34 @@
 'use client'
+import React from 'react'
+import Link from 'next/link'
+import { ArrowRight } from 'lucide-react'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useForm } from 'react-hook-form'
+import { z } from 'zod'
+
 import { Icons } from '@/components/Icon'
 import { Button, buttonVariants } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { cn } from '@/lib/utils'
-import { ArrowRight } from 'lucide-react'
-import Link from 'next/link'
-import React from 'react'
 
 const SignUpPage = () => {
+  const AuthCredentialsValidator = z.object({
+    email: z.string().email(),
+    password: z
+      .string()
+      .min(8, { message: 'Password must have be at least 8 characters long.' }),
+  })
+
+  type TAuthCredentialsValidator = z.infer<typeof AuthCredentialsValidator>
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<TAuthCredentialsValidator>({
+    resolver: zodResolver(AuthCredentialsValidator),
+  })
   return (
     <>
       <div className="container relative flex pt-20 flex-col items-center justify-center lg:px-0">
@@ -35,8 +55,9 @@ const SignUpPage = () => {
                 <div className="grid gap-1 py-2">
                   <Label htmlFor="email">Email</Label>
                   <Input
+                    {...register('email')}
                     className={cn({
-                      'focus-visible:ring-red-500': true,
+                      'focus-visible:ring-red-500': errors.email,
                     })}
                     placeholder="you@example.com"
                   />
@@ -44,8 +65,9 @@ const SignUpPage = () => {
                 <div className="grid gap-1 py-2">
                   <Label htmlFor="password">Password</Label>
                   <Input
+                    {...register('password')}
                     className={cn({
-                      'focus-visible:ring-red-500': true,
+                      'focus-visible:ring-red-500': errors.password,
                     })}
                     placeholder="Password"
                   />
