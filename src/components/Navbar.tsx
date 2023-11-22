@@ -1,9 +1,10 @@
 import React from 'react'
-import MaxWidthWrapper from './MaxWidthWrapper'
 import Link from 'next/link'
-import { Icons } from './Icon'
-import NavItems from './NavItems'
+
 import { buttonVariants } from './ui/button'
+import { Icons } from './Icon'
+import MaxWidthWrapper from './MaxWidthWrapper'
+import NavItems from './NavItems'
 import Cart from './Cart'
 
 const Navbar = () => {
