@@ -26,8 +26,7 @@ const SignUpPage = () => {
   })
 
   //initialize trpc
-  const { data } = trpc.anyApiRoute.useQuery()
-  console.log(data)
+
   //submitting form
 
   const onSubmit = ({ email, password }: TAuthCredentialsValidator) => {
