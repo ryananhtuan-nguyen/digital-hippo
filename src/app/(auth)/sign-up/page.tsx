@@ -1,27 +1,21 @@
 'use client'
-import React from 'react'
-import Link from 'next/link'
-import { ArrowRight } from 'lucide-react'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { ArrowRight } from 'lucide-react'
+import Link from 'next/link'
 import { useForm } from 'react-hook-form'
-import { z } from 'zod'
 
 import { Icons } from '@/components/Icon'
 import { Button, buttonVariants } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { cn } from '@/lib/utils'
+import {
+  AuthCredentialsValidator,
+  TAuthCredentialsValidator,
+} from '@/lib/validators/account-credentials-validator'
 
 const SignUpPage = () => {
-  const AuthCredentialsValidator = z.object({
-    email: z.string().email(),
-    password: z
-      .string()
-      .min(8, { message: 'Password must have be at least 8 characters long.' }),
-  })
-
-  type TAuthCredentialsValidator = z.infer<typeof AuthCredentialsValidator>
-
+  //validating form
   const {
     register,
     handleSubmit,
@@ -29,6 +23,13 @@ const SignUpPage = () => {
   } = useForm<TAuthCredentialsValidator>({
     resolver: zodResolver(AuthCredentialsValidator),
   })
+
+  //submitting form
+
+  const onSubmit = ({ email, password }: TAuthCredentialsValidator) => {
+    //send data to server
+  }
+
   return (
     <>
       <div className="container relative flex pt-20 flex-col items-center justify-center lg:px-0">
@@ -50,7 +51,7 @@ const SignUpPage = () => {
           </div>
 
           <div className="grid gap-6">
-            <form>
+            <form onSubmit={handleSubmit(onSubmit)}>
               <div className="grid gap-2">
                 <div className="grid gap-1 py-2">
                   <Label htmlFor="email">Email</Label>
