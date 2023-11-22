@@ -14,7 +14,7 @@ export const authRouter = router({
 
       //check if user already exists
 
-      const { docs: user } = await payload.find({
+      const { docs: users } = await payload.find({
         collection: 'users',
         where: {
           email: {
@@ -24,12 +24,17 @@ export const authRouter = router({
       })
 
       //throw error if user exists
-      if (user.length !== 0) throw new TRPCError({ code: 'CONFLICT' })
+      if (users.length !== 0) throw new TRPCError({ code: 'CONFLICT' })
 
       //if not, create user
       await payload.create({
         collection: 'users',
-        data: {},
+        data: {
+          email,
+          password,
+          role: 'user',
+        },
       })
+      return { success: true, sentToEmail: email }
     }),
 })
