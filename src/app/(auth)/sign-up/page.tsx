@@ -26,11 +26,12 @@ const SignUpPage = () => {
   })
 
   //initialize trpc
-
+  const { mutate, isLoading } = trpc.auth.createPayloadUser.useMutation({})
   //submitting form
 
   const onSubmit = ({ email, password }: TAuthCredentialsValidator) => {
     //send data to server
+    mutate({ email, password })
   }
 
   return (
@@ -74,6 +75,7 @@ const SignUpPage = () => {
                       'focus-visible:ring-red-500': errors.password,
                     })}
                     placeholder="Password"
+                    type="password"
                   />
                 </div>
 
