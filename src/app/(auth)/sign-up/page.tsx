@@ -3,6 +3,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 import { useForm } from 'react-hook-form'
+import { toast } from 'sonner'
 
 import { Icons } from '@/components/Icon'
 import { Button, buttonVariants } from '@/components/ui/button'
@@ -26,7 +27,13 @@ const SignUpPage = () => {
   })
 
   //initialize trpc
-  const { mutate, isLoading } = trpc.auth.createPayloadUser.useMutation({})
+  const { mutate, isLoading } = trpc.auth.createPayloadUser.useMutation({
+    onError: (err) => {
+      if (err.data?.code === 'CONFLICT') {
+        toast.error('This email is already in use. Sign in instead?')
+      }
+    },
+  })
   //submitting form
 
   const onSubmit = ({ email, password }: TAuthCredentialsValidator) => {
