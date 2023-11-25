@@ -46,7 +46,7 @@ export default function Home() {
           </div>
         </div>
 
-        {/* TODO: LIST PRODUCTS */}
+        {/* LIST PRODUCTS */}
         <ProductReel
           title="Brand new"
           href="/products"
