@@ -140,7 +140,7 @@ const ProductIdPage = async ({ params }: ProductIdPageProps) => {
                 <AddToCartButton product={product} />
               </div>
               <div className="mt-6 text-center">
-                <div className="group inline-flex text-sm text-medium">
+                <div className="group inline-flex text-sm font-medium">
                   <Shield
                     aria-hidden="true"
                     className="mr-2 h-5 w-5 flex-shrink-0 text-gray-400"
