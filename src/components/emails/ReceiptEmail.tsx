@@ -1,5 +1,6 @@
+import { formatPrice } from '../../lib/utils'
 import { Product } from '../../payload-types'
-import React from 'react'
+
 import {
   Body,
   Container,
@@ -15,7 +16,9 @@ import {
   Text,
   render,
 } from '@react-email/components'
-import { formatPrice } from '@/lib/utils'
+
+import * as React from 'react'
+
 import { format } from 'date-fns'
 
 interface ReceiptEmailProps {
@@ -25,13 +28,13 @@ interface ReceiptEmailProps {
   products: Product[]
 }
 
-const ReceiptEmail = ({
+export const ReceiptEmail = ({
   email,
   date,
   orderId,
   products,
 }: ReceiptEmailProps) => {
-  const total = products.reduce((acc, prod) => acc + prod.price, 0) + 1
+  const total = products.reduce((acc, curr) => acc + curr.price, 0) + 1
 
   return (
     <Html>
@@ -131,7 +134,12 @@ const ReceiptEmail = ({
 
           <Section>
             <Column style={{ width: '64px' }}></Column>
-            <Column style={{ paddingLeft: '40px', paddingTop: 20 }}>
+            <Column
+              style={{
+                paddingLeft: '40px',
+                paddingTop: 20,
+              }}
+            >
               <Text style={productTitle}>Transaction Fee</Text>
             </Column>
 
@@ -166,8 +174,6 @@ const ReceiptEmail = ({
     </Html>
   )
 }
-
-export default ReceiptEmail
 
 export const ReceiptEmailHtml = (props: ReceiptEmailProps) =>
   render(<ReceiptEmail {...props} />, {

@@ -3,7 +3,7 @@ import { cookies } from 'next/headers'
 import Link from 'next/link'
 
 import { buttonVariants } from './ui/button'
-import { Icons } from './Icon'
+import { Icons } from './Icons'
 import MaxWidthWrapper from './MaxWidthWrapper'
 import NavItems from './NavItems'
 import Cart from './Cart'
