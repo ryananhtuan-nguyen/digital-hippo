@@ -44,7 +44,7 @@ var EmailTemplate = function (_a) {
         React.createElement(components_1.Preview, null, "The marketplace for high-quality digital goods."),
         React.createElement(components_1.Body, { style: main },
             React.createElement(components_1.Container, { style: container },
-                React.createElement(components_1.Img, { src: "".concat(process.env.NEXT_PUBLIC_SERVER_URL, "/hippo-newsletter-sign-up.png"), width: "150", height: "150", alt: "DigitalHippo", style: logo }),
+                React.createElement(components_1.Img, { src: "".concat(process.env.NEXT_PUBLIC_SERVER_URL, "/hippo-newsletter-sign-up.png"), width: '150', height: '150', alt: 'DigitalHippo', style: logo }),
                 React.createElement(components_1.Text, { style: paragraph }, "Hi there,"),
                 React.createElement(components_1.Text, { style: paragraph },
                     "Welcome to DigitalHippo, the marketplace for high quality digital goods. Use the button below to ",
@@ -60,9 +60,7 @@ var EmailTemplate = function (_a) {
                 React.createElement(components_1.Text, { style: footer }, "If you did not request this email, you can safely ignore it.")))));
 };
 exports.EmailTemplate = EmailTemplate;
-var PrimaryActionEmailHtml = function (props) {
-    return (0, components_1.render)(React.createElement(exports.EmailTemplate, __assign({}, props)), { pretty: true });
-};
+var PrimaryActionEmailHtml = function (props) { return (0, components_1.render)(React.createElement(exports.EmailTemplate, __assign({}, props)), { pretty: true }); };
 exports.PrimaryActionEmailHtml = PrimaryActionEmailHtml;
 var main = {
     backgroundColor: '#ffffff',

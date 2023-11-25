@@ -1,8 +1,9 @@
-import { PrimaryActionEmailHtml } from '@/components/emails/PrimaryActionEmail'
+import { PrimaryActionEmailHtml } from '../components/emails/PrimaryActionEmail'
 import { Access, CollectionConfig } from 'payload/types'
 
 const adminsAndUser: Access = ({ req: { user } }) => {
   if (user.role === 'admin') return true
+
   return {
     id: {
       equals: user.id,
@@ -46,7 +47,7 @@ export const Users: CollectionConfig = {
     },
     {
       name: 'product_files',
-      label: 'Product Files',
+      label: 'Product files',
       admin: {
         condition: () => false,
       },
@@ -58,19 +59,11 @@ export const Users: CollectionConfig = {
       name: 'role',
       defaultValue: 'user',
       required: true,
-      // admin: {
-      //   condition: () => false,
-      // },
+
       type: 'select',
       options: [
-        {
-          label: 'Admin',
-          value: 'admin',
-        },
-        {
-          label: 'User',
-          value: 'user',
-        },
+        { label: 'Admin', value: 'admin' },
+        { label: 'User', value: 'user' },
       ],
     },
   ],

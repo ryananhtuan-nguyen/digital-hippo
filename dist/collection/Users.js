@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Users = void 0;
-var PrimaryActionEmail_1 = require("@/components/emails/PrimaryActionEmail");
+var PrimaryActionEmail_1 = require("../components/emails/PrimaryActionEmail");
 var adminsAndUser = function (_a) {
     var user = _a.req.user;
     if (user.role === 'admin')
@@ -58,7 +58,7 @@ exports.Users = {
         },
         {
             name: 'product_files',
-            label: 'Product Files',
+            label: 'Product files',
             admin: {
                 condition: function () { return false; },
             },
@@ -70,19 +70,10 @@ exports.Users = {
             name: 'role',
             defaultValue: 'user',
             required: true,
-            // admin: {
-            //   condition: () => false,
-            // },
             type: 'select',
             options: [
-                {
-                    label: 'Admin',
-                    value: 'admin',
-                },
-                {
-                    label: 'User',
-                    value: 'user',
-                },
+                { label: 'Admin', value: 'admin' },
+                { label: 'User', value: 'user' },
             ],
         },
     ],
