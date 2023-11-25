@@ -68,7 +68,7 @@ const ProductReel = (props: ProductReelProps) => {
               <ProductListing
                 product={product}
                 index={i}
-                key={product?.id || i}
+                key={`product-${i}`}
               />
             ))}
           </div>
