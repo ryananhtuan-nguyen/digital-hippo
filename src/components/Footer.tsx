@@ -36,7 +36,7 @@ const Footer = () => {
                   </h3>
                   <p className="mt-2 text-sm text-muted-foreground">
                     If you&apos;d like to sell high-quality digital products,
-                    you can do so in minutes. {' ]'}
+                    you can do so in minutes.
                     <Link
                       href="/sign-in?as=seller"
                       className="whitespace-nowrap font-medium text-black hover:text-zinc-900"
