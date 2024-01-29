@@ -54,7 +54,4 @@
 
 
 
-   ## A deployed version can be found here
-   [https://digital-hippo-production.up.railway.app/](https://digital-hippo-production.up.railway.app/)
-
-   Try it out and see for yourself
+   ## Deployed version expired.
